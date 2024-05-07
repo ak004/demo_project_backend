@@ -5,37 +5,32 @@ import mongoose from "mongoose";
 import mongooseSequence from "mongoose-sequence";
 
 // Create a user schema
-const userSchema = new Schema({
-  userName: {
+const indivdual_tax_payerSchema = new Schema({
+  full_name: {
     type: String,
     required: true,
   },
-  userRoleID: {
-    type: Schema.Types.ObjectId,
-    required: true,
+  data_of_birth: {
+    type: Date,
+    default: null,
   },
-  userEmail: {
+  national_id: {
     type: String,
     required: true,
     unique: true,
   },
-  password: {
+  national_id_issue_date: {
+    type: Date,
+    default: null,
+  },
+  national_id_expiry_date: {
+    type: Date,
+    default: null,
+  },
+  passport_number: {
     type: String,
     required: true,
 
-  },
-  userContactNo: {
-    type: String,
-  },
- 
- 
-  profile_image: {
-    type: String,
-    default: null,
-  },
-  user_type: {
-    type: String,
-    required: true,
   },
   status:{
     type: Number,
@@ -51,11 +46,11 @@ const userSchema = new Schema({
     },
 });
 
-userSchema.plugin(mongooseSequence(mongoose), {
-  id: "users",
+indivdual_tax_payerSchema.plugin(mongooseSequence(mongoose), {
+  id: "indivdual_tax_payer",
   inc_field: "unique_id",
   start_seq: 1,
 });
 
 // Create and export the user model
-export default model("User", userSchema);
+export default model("indivdual_tax_payer", indivdual_tax_payerSchema);

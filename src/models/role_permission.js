@@ -5,38 +5,13 @@ import mongoose from "mongoose";
 import mongooseSequence from "mongoose-sequence";
 
 // Create a user schema
-const userSchema = new Schema({
-  userName: {
+const role_permission_Schema = new Schema({
+  permission_name: {
     type: String,
     required: true,
   },
-  userRoleID: {
-    type: Schema.Types.ObjectId,
-    required: true,
-  },
-  userEmail: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-
-  },
-  userContactNo: {
-    type: String,
-  },
- 
- 
-  profile_image: {
-    type: String,
-    default: null,
-  },
-  user_type: {
-    type: String,
-    required: true,
-  },
+  allowed_objects: { type: Array, default: [] },
+   
   status:{
     type: Number,
     default: 1
@@ -51,11 +26,11 @@ const userSchema = new Schema({
     },
 });
 
-userSchema.plugin(mongooseSequence(mongoose), {
-  id: "users",
+role_permission_Schema.plugin(mongooseSequence(mongoose), {
+  id: "role_permission",
   inc_field: "unique_id",
   start_seq: 1,
 });
 
 // Create and export the user model
-export default model("User", userSchema);
+export default model("role_permission", role_permission_Schema);
