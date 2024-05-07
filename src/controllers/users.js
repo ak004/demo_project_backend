@@ -10,7 +10,7 @@ export const get_users = function (req, res) {
       // success: yest_mesage,
       data: [
         {
-          name: "John Doe",
+          name: "ABDI Doe",
           email: "something@gmal.com",
         },
       ],
