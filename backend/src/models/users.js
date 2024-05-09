@@ -12,7 +12,8 @@ const userSchema = new Schema({
   },
   userRoleID: {
     type: Schema.Types.ObjectId,
-    required: true,
+    // required: true,
+    default:null
   },
   userEmail: {
     type: String,
